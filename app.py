@@ -98,31 +98,33 @@ elif menu == "Administrador (Solo Admin)":
             if socio_data:
                 st.markdown("---")
                 st.markdown(f"### Perfil de: {socio_data['Nombre']}")
-                    for k, v in socio_data.items():
-...                             if k != "Nombre":
-...                                     st.markdown(f"**{k}:** {v}")
-...                 st.markdown("---")
-...             
-...             st.subheader("3. PROCESAMIENTO CON GEMINI AI")
-...             st.markdown("Copia el siguiente texto y pégalo en tu chat con Gemini para obtener el análisis:")
-...             
-...             # Generador de Prompt Automático
-...             prompt_texto = "Actúa como consultor experto. Aquí tienes los perfiles detallados de 4 socios para un emprendimiento. Analiza la convergencia de habilidades (Effectuation), ventajas injustas y pasiones. \n\n"
-...             for d in datos:
-...                 prompt_texto += f"--- SOCIO: {d['Nombre']} ---\n"
-...                 prompt_texto += f"Perfil y Habilidades: {d['Trayectoria']} | {d['Conocimiento']}\n"
-...                 prompt_texto += f"Red de Contactos: {d['Contactos']}\n"
-...                 prompt_texto += f"Insights de Mercado: {d['Insight']} | Recursos: {d['Recursos']}\n"
-...                 prompt_texto += f"Intereses/Pasiones: {d['Pasion']} | Tareas: {d['Tareas']}\n"
-...                 prompt_texto += f"Ideas Propuestas: {d['Ideas']}\n\n"
-...             
-...             prompt_texto += "TAREA: Basado en esta data, 1) Identifica patrones de convergencia, 2) Genera 3 Ideas de Negocio sólidas que combinen los activos de los 4, 3) Desarrolla el Modelo de Negocio y Modelo de Ingresos para cada una."
-...             
-...             st.code(prompt_texto, language='text')
-...             
-...         else:
-...             st.warning("Aún no hay datos registrados.")
-...             
-...     elif password:
+                for k, v in socio_data.items(): # <-- ESTA LÍNEA DEBE TENER 20 ESPACIOS
+                    if k != "Nombre":
+                        st.markdown(f"**{k}:** {v}")
+                st.markdown("---")
+                
+            st.subheader("3. PROCESAMIENTO CON GEMINI AI")
+            st.markdown("Copia el siguiente texto y pégalo en tu chat con Gemini para obtener el análisis:")
+            
+            # Generador de Prompt Automático
+            prompt_texto = "Actúa como consultor experto. Aquí tienes los perfiles detallados de 4 socios para un emprendimiento. Analiza la convergencia de habilidades (Effectuation), ventajas injustas y pasiones. \n\n"
+            for d in datos:
+                prompt_texto += f"--- SOCIO: {d['Nombre']} ---\n"
+                prompt_texto += f"Perfil y Habilidades: {d['Trayectoria']} | {d['Conocimiento']}\n"
+                prompt_texto += f"Red de Contactos: {d['Contactos']}\n"
+                prompt_texto += f"Insights de Mercado: {d['Insight']} | Recursos: {d['Recursos']}\n"
+                prompt_texto += f"Intereses/Pasiones: {d['Pasion']} | Tareas: {d['Tareas']}\n"
+                prompt_texto += f"Ideas Propuestas: {d['Ideas']}\n\n"
+            
+            prompt_texto += "TAREA: Basado en esta data, 1) Identifica patrones de convergencia, 2) Genera 3 Ideas de Negocio sólidas que combinen los activos de los 4, 3) Desarrolla el Modelo de Negocio y Modelo de Ingresos para cada una."
+            
+            st.code(prompt_texto, language='text')
+            
+        else:
+            st.warning("Aún no hay datos registrados.")
+            
+    elif password:
+        st.error("Contraseña incorrecta.")
+
 
 
