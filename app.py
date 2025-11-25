@@ -98,9 +98,9 @@ elif menu == "Administrador (Solo Admin)":
             if socio_data:
                 st.markdown("---")
                 st.markdown(f"### Perfil de: {socio_data['Nombre']}")
-                for k, v in socio_data.items():
-...                     if k != "Nombre":
-...                         st.markdown(f"**{k}:** {v}")
+                    for k, v in socio_data.items():
+...                             if k != "Nombre":
+...                                     st.markdown(f"**{k}:** {v}")
 ...                 st.markdown("---")
 ...             
 ...             st.subheader("3. PROCESAMIENTO CON GEMINI AI")
@@ -124,4 +124,5 @@ elif menu == "Administrador (Solo Admin)":
 ...             st.warning("Aún no hay datos registrados.")
 ...             
 ...     elif password:
+
 
